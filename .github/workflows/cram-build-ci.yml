@@ -14,6 +14,7 @@ jobs:
       ROS_PARALLEL_JOBS: '-j8 -l6'
       PYTHONPATH: $PYTHONPATH:/usr/lib/python3/dist-packages:/usr/local/lib/python3/dist-packages
       ROS_DISTRO: noetic
+      CMAKE_WARN_DEPRECATED: FALSE 
     steps:
       - name: Install xvfb and freeglut for bullet
         run: |
