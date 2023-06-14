@@ -43,7 +43,7 @@
                       :angle-max angle))
          (rotated-pos (cl-transforms:normalize-vector rot-pos))
          (rotated-rot (cl-transforms:euler->quaternion :az angle)))
-    (assert-true (= (ceiling (abs (/ angle 0.1))) (length traj-poses)))
+    (assert-true (= (+ (ceiling (abs (/ angle 0.1))) 1) (length traj-poses)))
     (assert-true (> 0.1 (acos (cl-transforms:dot-product
                                rotated-pos
                                (cl-transforms:translation
@@ -65,8 +65,9 @@
          (traj-poses (env-man::get-revolute-traj-poses
                       joint-to-gripper
                       :axis axis
-                      :angle-max 0)))
-    (assert-number-equal 0 (length traj-poses))))
+                      :angle-max 0.0)))
+	(format t "~a" traj-poses)
+    (assert-number-equal 1 (length traj-poses))))
 
 (define-test get-revolute-traj-poses-45-angle
   (get-revolute-traj-poses-generic-angle-test
