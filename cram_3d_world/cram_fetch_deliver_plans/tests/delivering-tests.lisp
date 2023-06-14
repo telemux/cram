@@ -102,7 +102,7 @@
                                        (*valid-robot-pose-towards-island*)))))))))
   (assert-equal 1 (get-error-count-for-error 'common-fail:delivering-failed))
   (assert-equal 2 (get-error-count-for-error 'common-fail:object-undeliverable))
-  (assert-equal 1 (get-error-count-for-error 'common-fail:manipulation-low-level-failure))
+  (assert-equal 1 (get-error-count-for-error 'common-fail:manipulation-low-level-failure)) ;Failed
   (assert-equal 1 (get-error-count-for-error 'common-fail:object-unreachable)))
 
 
@@ -134,7 +134,7 @@
                    (type delivering)
                    (target (a location
                               (poses (*valid-location-on-sink-area-surface*))))
-                   (arm left)
+                   (arm (left))
                    (object ?fetched-object)
                    (robot-location (a location
                                       (poses
